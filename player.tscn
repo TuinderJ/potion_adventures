@@ -1,0 +1,160 @@
+[gd_scene load_steps=18 format=3 uid="uid://hllkuvtnc6yw"]
+
+[ext_resource type="Texture2D" uid="uid://bwyfqv68nqbud" path="res://assets/aseprite/player.png" id="1_7tdkm"]
+[ext_resource type="Script" path="res://player.gd" id="1_ob2sr"]
+
+[sub_resource type="Animation" id="Animation_u5kon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x74e2"]
+resource_name = "loot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_loot_end"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cryob"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1caoj"]
+resource_name = "exhausted"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28a41"]
+_data = {
+"RESET": SubResource("Animation_u5kon"),
+"exhausted": SubResource("Animation_1caoj"),
+"loot": SubResource("Animation_x74e2"),
+"walk": SubResource("Animation_cryob")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_75kn5"]
+animation = &"exhausted"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bf0q0"]
+animation = &"loot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_olsj2"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwxy8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1rdsj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cs2ve"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ekbb1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ptys8"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3cevi"]
+states/exhausted/node = SubResource("AnimationNodeAnimation_75kn5")
+states/exhausted/position = Vector2(333, 166)
+states/loot/node = SubResource("AnimationNodeAnimation_bf0q0")
+states/loot/position = Vector2(424, 89)
+states/walk/node = SubResource("AnimationNodeAnimation_olsj2")
+states/walk/position = Vector2(309, 59)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_hwxy8"), "walk", "loot", SubResource("AnimationNodeStateMachineTransition_1rdsj"), "loot", "walk", SubResource("AnimationNodeStateMachineTransition_cs2ve"), "loot", "exhausted", SubResource("AnimationNodeStateMachineTransition_ekbb1"), "exhausted", "walk", SubResource("AnimationNodeStateMachineTransition_ptys8")]
+graph_offset = Vector2(-58, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmdoq"]
+size = Vector2(58, 64)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ob2sr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_7tdkm")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28a41")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28a41")
+}
+tree_root = SubResource("AnimationNodeStateMachine_3cevi")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CollectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+position = Vector2(18, -32)
+shape = SubResource("RectangleShape2D_kmdoq")
+
+[node name="MissedLootTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
+[connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
+[connection signal="timeout" from="MissedLootTimer" to="." method="_on_missed_loot_timer_timeout"]

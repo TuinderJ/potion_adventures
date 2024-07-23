@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bluh3qkjd4mtv"]
+
+[ext_resource type="Script" path="res://flower.gd" id="1_74fym"]
+
+[node name="Flower" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_74fym")
