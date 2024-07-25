@@ -10,24 +10,33 @@ signal currency_updated
 
 var upgrades: = {
 	"should_highlight_flowers": false,
-	"harvest_time": 10.0
+	"harvest_time": 10.0,
+	"harvest_multiplier": 1.0
 }
 var shop_items: = {
 	"highlight_flowers": {
 		"cost": 100,
-		"tooltip": "Highlights the flowers that appear to make them easier to see.",
+		"tooltip": "Highlights the flowers that appear to make them easier to see",
 		"max_purchases": 1,
 		"times_purchased": 0,
-		"cost_scale": 1.50,
+		"cost_scale": 1.5,
 		"texture_path": "res://assets/potions/32_Concentrated_Blue.png"
 	},
 	"extend_harvest_time": {
 		"cost": 50,
-		"tooltip": "Adds 10 seconds to the timer to allow for more harvesting.",
+		"tooltip": "Adds 10 seconds to the timer to allow for more harvesting",
 		"max_purchases": 5,
 		"times_purchased": 0,
-		"cost_scale": 1.50,
+		"cost_scale": 1.5,
 		"texture_path": "res://assets/potions/33_Concentrated_Red.png"
+	},
+	"increase_harvest_efficiency": {
+		"cost": 200,
+		"tooltip": "Doubles The harvest from each flower collected",
+		"max_purchases": 2,
+		"times_purchased": 0,
+		"cost_scale": 2.0,
+		"texture_path": "res://assets/potions/34_Concentrated_Yellow.png"
 	}
 }
 
@@ -42,7 +51,10 @@ func purchase_item(upgrade: String) -> void:
 	call(upgrade + "_purchased")
 
 func highlight_flowers_purchased() -> void:
-	upgrades["should_highlight_flowers"] = true
+	upgrades.should_highlight_flowers = true
 	
 func extend_harvest_time_purchased() -> void:
-	upgrades["harvest_time"] += 10
+	upgrades.harvest_time += 10
+
+func increase_harvest_efficiency_purchased() -> void:
+	upgrades.harvest_multiplier *= 2

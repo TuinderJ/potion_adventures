@@ -51,5 +51,5 @@ func on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func collect() -> void:
-	Game.currency += value
+	Game.currency += (value * Game.upgrades.harvest_multiplier)
 	queue_free()
