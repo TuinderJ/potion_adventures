@@ -10,7 +10,7 @@ signal currency_updated
 
 var upgrades: = {
 	"should_highlight_flowers": false,
-	"harvest_time": 1.0
+	"harvest_time": 10.0
 }
 var shop_items: = {
 	"highlight_flowers": {
