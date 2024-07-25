@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccp4l513axtev"]
+[gd_scene load_steps=5 format=3 uid="uid://ccp4l513axtev"]
 
 [ext_resource type="Script" path="res://shop_items_container.gd" id="1_2rf77"]
 [ext_resource type="Script" path="res://shop.gd" id="1_qsgid"]
+[ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="3_rjfwl"]
 [ext_resource type="Script" path="res://currency_label.gd" id="3_xcfra"]
 
 [node name="Shop" type="Control"]
@@ -23,6 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+text = "Purchase potions to augment your harvest"
+horizontal_alignment = 1
+
 [node name="ShopItemsContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 columns = 4
@@ -38,13 +47,20 @@ theme_override_constants/margin_right = 160
 layout_mode = 2
 text = "Harvest Again"
 
-[node name="CurrencyLabel" type="Label" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
 grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_rjfwl")
+
+[node name="CurrencyLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
 script = ExtResource("3_xcfra")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy1srpchgj1bu"]
+[gd_scene load_steps=4 format=3 uid="uid://dy1srpchgj1bu"]
 
 [ext_resource type="Script" path="res://shop_item.gd" id="1_5dfiw"]
-[ext_resource type="Texture2D" uid="uid://cmrkgxh7jki1y" path="res://icon.svg" id="1_fm1s7"]
+[ext_resource type="Texture2D" uid="uid://1uunvge4d20n" path="res://assets/potions/32_Concentrated_Blue.png" id="2_21481"]
+[ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="3_end60"]
 
 [node name="ShopItem" type="MarginContainer"]
 theme_override_constants/margin_left = 10
@@ -14,9 +15,12 @@ script = ExtResource("1_5dfiw")
 layout_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="PanelContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_fm1s7")
+texture_normal = ExtResource("2_21481")
+stretch_mode = 0
 
 [node name="UpgradeName" type="Label" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -24,9 +28,35 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "Extend Harvest Time"
+text = "Upgrade Name"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Coin Texture" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_end60")
+expand_mode = 2
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanPurchaseCover" type="Panel" parent="PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
 
 [node name="Max" type="Label" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -36,21 +66,5 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Max"
 horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="UpgradeCost" type="Label" parent="PanelContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "100"
-horizontal_alignment = 1
-
-[node name="CanPurchaseCover" type="Panel" parent="PanelContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-mouse_filter = 2
 
 [connection signal="pressed" from="PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]
