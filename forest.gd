@@ -1,6 +1,10 @@
 extends Node2D
 
 @onready var flower_spawn_timer: Timer = $FlowerSpawnTimer
+@onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
+
+func _ready() -> void:
+	progress_bar.call("start_progress_bar", Game.upgrades.harvest_time)
 
 func spawn_flower():
 	var flower = Flower.new()
