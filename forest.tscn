@@ -70,4 +70,19 @@ position = Vector2(234, -112)
 one_shot = true
 autostart = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 40.0
+offset_right = 20.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Click to Harvest"
+
 [connection signal="timeout" from="FlowerSpawnTimer" to="." method="_on_flower_spawn_timer_timeout"]

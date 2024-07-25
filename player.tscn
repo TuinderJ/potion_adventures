@@ -1,51 +1,62 @@
-[gd_scene load_steps=18 format=3 uid="uid://hllkuvtnc6yw"]
+[gd_scene load_steps=25 format=3 uid="uid://hllkuvtnc6yw"]
 
-[ext_resource type="Texture2D" uid="uid://bwyfqv68nqbud" path="res://assets/aseprite/player.png" id="1_7tdkm"]
 [ext_resource type="Script" path="res://player.gd" id="1_ob2sr"]
+[ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="2_aeiqo"]
+[ext_resource type="Texture2D" uid="uid://34gnm5b8m832" path="res://assets/player/character_sword_Attack_0.png" id="3_bqruw"]
+[ext_resource type="Texture2D" uid="uid://bt5pgn7jtvqmb" path="res://assets/player/character_sword_Attack_1.png" id="4_c75up"]
+[ext_resource type="Texture2D" uid="uid://dvjsasbpx3uex" path="res://assets/player/character_sword_Attack_2.png" id="5_uyrhw"]
+[ext_resource type="Texture2D" uid="uid://b8gangw6tumvh" path="res://assets/player/character_sword_Attack_3.png" id="6_yvraq"]
+[ext_resource type="Texture2D" uid="uid://dehr8f1wuebao" path="res://assets/player/character_run_1.png" id="7_3p7ua"]
+[ext_resource type="Texture2D" uid="uid://b35pi3kkc0xl8" path="res://assets/player/character_run_2.png" id="8_3oqfp"]
+[ext_resource type="Texture2D" uid="uid://jf2i53rire0l" path="res://assets/player/character_run_3.png" id="9_cmj7g"]
 
 [sub_resource type="Animation" id="Animation_u5kon"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [ExtResource("2_aeiqo")]
 }
+
+[sub_resource type="Animation" id="Animation_1caoj"]
+resource_name = "exhausted"
+length = 0.1
 
 [sub_resource type="Animation" id="Animation_x74e2"]
 resource_name = "loot"
-length = 0.3
-tracks/0/type = "value"
+length = 0.4
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [4, 5, 6]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"_on_loot_end"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_bqruw"), ExtResource("4_c75up"), ExtResource("5_uyrhw"), ExtResource("6_yvraq")]
 }
 
 [sub_resource type="Animation" id="Animation_cryob"]
@@ -55,30 +66,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_1caoj"]
-resource_name = "exhausted"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
+"values": [ExtResource("2_aeiqo"), ExtResource("7_3p7ua"), ExtResource("8_3oqfp"), ExtResource("9_cmj7g")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28a41"]
@@ -122,16 +117,16 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-58, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmdoq"]
-size = Vector2(58, 64)
+size = Vector2(37, 58)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ob2sr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-texture = ExtResource("1_7tdkm")
-hframes = 4
-vframes = 3
+texture_filter = 1
+position = Vector2(0, -42)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_aeiqo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -148,7 +143,7 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="CollectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
-position = Vector2(18, -32)
+position = Vector2(7.5, -29)
 shape = SubResource("RectangleShape2D_kmdoq")
 
 [node name="MissedLootTimer" type="Timer" parent="."]

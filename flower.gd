@@ -24,9 +24,10 @@ func set_up_sprite(random_number: String) -> void:
 	sprite_2d.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite_2d.scale = Vector2(2, 2)
 	
-	var shader_material = ShaderMaterial.new()
-	shader_material.shader = preload("res://flower.gdshader")
-	#sprite_2d.material = shader_material
+	if Game.flower_mods["should_highlight"]:
+		var shader_material = ShaderMaterial.new()
+		shader_material.shader = preload("res://flower.gdshader")
+		sprite_2d.material = shader_material
 		
 	add_child(sprite_2d)
 
@@ -50,5 +51,5 @@ func on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func collect() -> void:
-	Stats.currency += value
+	Game.currency += value
 	queue_free()

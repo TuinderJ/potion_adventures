@@ -22,7 +22,6 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta: float) -> void:
 	if collectables.size() and playback.get_current_node() == "loot":
 		for collectable in collectables:
-			print("Collected ", collectable.name)
 			collectable.collect()
 		collected_anything = true
 
