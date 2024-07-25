@@ -32,9 +32,9 @@ theme_override_font_sizes/font_size = 20
 text = "Purchase potions to augment your harvest"
 horizontal_alignment = 1
 
-[node name="ShopItemsContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="ShopItemsContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-columns = 4
+alignment = 1
 script = ExtResource("1_2rf77")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]

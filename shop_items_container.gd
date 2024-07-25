@@ -1,4 +1,4 @@
-extends GridContainer
+extends HBoxContainer
 
 const SHOP_ITEM = preload("res://shop_item.tscn")
 
