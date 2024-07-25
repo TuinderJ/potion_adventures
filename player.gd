@@ -29,8 +29,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("loot") and playback.get_current_node() == "walk":
 		playback.travel("loot")
 		collected_anything = false
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
 
 func _on_collection_area_area_entered(area: Area2D) -> void:
 	collectables.append(area.get_parent())

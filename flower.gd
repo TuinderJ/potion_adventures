@@ -24,7 +24,7 @@ func set_up_sprite(random_number: String) -> void:
 	sprite_2d.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite_2d.scale = Vector2(2, 2)
 	
-	if Game.upgrades.flower_mods["should_highlight"]:
+	if Game.upgrades["should_highlight_flowers"]:
 		var shader_material = ShaderMaterial.new()
 		shader_material.shader = preload("res://flower.gdshader")
 		sprite_2d.material = shader_material

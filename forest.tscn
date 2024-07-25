@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://tux6mf8smlay"]
+[gd_scene load_steps=18 format=3 uid="uid://tux6mf8smlay"]
 
 [ext_resource type="Texture2D" uid="uid://b0cowvfnutyko" path="res://assets/NightForest/Layers/1.png" id="1_2fm3y"]
 [ext_resource type="Script" path="res://forest.gd" id="1_emwtk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ci53mqnqhn5ba" path="res://assets/NightForest/Layers/5.png" id="5_5fmla"]
 [ext_resource type="Texture2D" uid="uid://b5uj0rtyjxp4e" path="res://assets/NightForest/Layers/6.png" id="6_c14b4"]
 [ext_resource type="PackedScene" uid="uid://hllkuvtnc6yw" path="res://player.tscn" id="7_vgtrg"]
+[ext_resource type="Script" path="res://click_label.gd" id="9_fk21j"]
 [ext_resource type="Script" path="res://progress_bar.gd" id="9_qbm5f"]
 [ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="10_r5cno"]
 [ext_resource type="Texture2D" uid="uid://dehr8f1wuebao" path="res://assets/player/character_run_1.png" id="11_8wljm"]
@@ -128,6 +129,7 @@ grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 text = "Click to Harvest"
+script = ExtResource("9_fk21j")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 custom_minimum_size = Vector2(300, 20)

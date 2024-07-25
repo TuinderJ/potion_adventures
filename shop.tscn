@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccp4l513axtev"]
+
+[ext_resource type="Script" path="res://shop_items_container.gd" id="1_2rf77"]
+[ext_resource type="Script" path="res://shop.gd" id="1_qsgid"]
+[ext_resource type="Script" path="res://currency_label.gd" id="3_xcfra"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsgid")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ShopItemsContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+columns = 4
+script = ExtResource("1_2rf77")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 160
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Harvest Again"
+
+[node name="CurrencyLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+script = ExtResource("3_xcfra")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

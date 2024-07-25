@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy1srpchgj1bu"]
+
+[ext_resource type="Script" path="res://shop_item.gd" id="1_5dfiw"]
+[ext_resource type="Texture2D" uid="uid://cmrkgxh7jki1y" path="res://icon.svg" id="1_fm1s7"]
+
+[node name="ShopItem" type="MarginContainer"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_5dfiw")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_fm1s7")
+
+[node name="UpgradeName" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Extend Harvest Time"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Max" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Max"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "100"
+horizontal_alignment = 1
+
+[node name="CanPurchaseCover" type="Panel" parent="PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]
