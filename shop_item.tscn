@@ -51,5 +51,6 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]

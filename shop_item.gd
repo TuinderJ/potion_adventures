@@ -7,6 +7,7 @@ var upgrade
 func _ready() -> void:
 	Game.currency_updated.connect(update_shop_item)
 	%UpgradeName.text = upgrade.capitalize()
+	texture_button.tooltip_text = Game.shop_items[upgrade].tooltip
 	update_shop_item()
 
 func _on_texture_button_pressed() -> void:
@@ -15,7 +16,6 @@ func _on_texture_button_pressed() -> void:
 	if Game.currency < Game.shop_items[upgrade].cost:
 		return
 	Game.purchase_item(upgrade)
-	print(Game.shop_items[upgrade])
 	update_shop_item()
 
 func update_shop_item() -> void:
