@@ -1,7 +1,7 @@
 extends Node
 
 var number_of_runs: = 0
-var currency: int = 50:
+var currency: int = 0:
 	set(new_value):
 		currency = new_value
 		currency_updated.emit()
@@ -10,7 +10,7 @@ signal currency_updated
 
 var upgrades: = {
 	"should_highlight_flowers": false,
-	"harvest_time": 0.5
+	"harvest_time": 10.0
 }
 var shop_items: = {
 	"highlight_flowers": {
