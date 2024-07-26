@@ -37,9 +37,11 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="Coin Texture" type="TextureRect" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_end60")
 expand_mode = 2
 
@@ -67,10 +69,5 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Max"
 horizontal_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Max"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="pressed" from="PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]
