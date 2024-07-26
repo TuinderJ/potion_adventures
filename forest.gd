@@ -13,5 +13,15 @@ func spawn_flower():
 
 func _on_flower_spawn_timer_timeout() -> void:
 	spawn_flower()
-	flower_spawn_timer.wait_time = randf_range(1,3.5)
+	flower_spawn_timer.wait_time = randf_range(0.5,2.5)
 	flower_spawn_timer.start()
+
+func _on_harvest_time_finished() -> void:
+	var stationary_camera = Camera2D.new()
+	stationary_camera.global_position = %PlayerCamera.global_position
+	stationary_camera.enabled = true
+	add_child(stationary_camera)
+	%PlayerCamera.enabled = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	Game._on_harvest_ending_animation_finished()

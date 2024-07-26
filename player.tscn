@@ -147,7 +147,7 @@ position = Vector2(7.5, -29)
 shape = SubResource("RectangleShape2D_kmdoq")
 
 [node name="MissedLootTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.0
 one_shot = true
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]

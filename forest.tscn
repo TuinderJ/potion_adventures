@@ -108,8 +108,13 @@ centered = false
 [node name="Player" parent="." instance=ExtResource("7_vgtrg")]
 position = Vector2(76, 292)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
 position = Vector2(234, -112)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Player"]
+position = Vector2(14, -28.5)
+scale = Vector2(4.3, 3.05)
 
 [node name="FlowerSpawnTimer" type="Timer" parent="."]
 one_shot = true
@@ -152,4 +157,5 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_f8fbo")
 autoplay = "default"
 
+[connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="FlowerSpawnTimer" to="." method="_on_flower_spawn_timer_timeout"]

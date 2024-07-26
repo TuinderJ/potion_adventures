@@ -2,6 +2,7 @@ extends Node2D
 class_name Flower
 
 var value: int
+var should_double: = false
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://assets/flowers/")
@@ -11,7 +12,7 @@ func _ready() -> void:
 		random_number = "0" + random_number
 	if int(random_number) < 10:
 		random_number = "0" + random_number
-	value = int(random_number)
+	value = ceil(int(random_number) * .1)
 	
 	set_up_sprite(random_number)
 	set_up_area_2d()
@@ -51,5 +52,15 @@ func on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func collect() -> void:
-	Game.currency += (value * Game.upgrades.harvest_multiplier)
+	_should_double()
+	if should_double:
+		Game.currency += (value * 2)
+	else:
+		Game.currency += value
 	queue_free()
+
+func _should_double() -> void:
+	var random_number = randf_range(0, 1)
+	prints(random_number, Game.upgrades.harvest_double_chance)
+	should_double = random_number < Game.upgrades.harvest_double_chance
+	prints("Should Double", should_double)

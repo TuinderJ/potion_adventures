@@ -11,38 +11,46 @@ signal currency_updated
 var upgrades: = {
 	"should_highlight_flowers": false,
 	"harvest_time": 10.0,
-	"harvest_multiplier": 1.0
+	"harvest_double_chance": 0.0,
+	"exhaustion_timer": 2.0
 }
 var shop_items: = {
-	"highlight_flowers": {
-		"cost": 100,
+	"potion_of_enhanced_sight": {
+		"cost": 150,
 		"tooltip": "Highlights the flowers that appear to make them easier to see",
 		"max_purchases": 1,
 		"times_purchased": 0,
-		"cost_scale": 1.5,
-		"texture_path": "res://assets/potions/32_Concentrated_Blue.png"
+		"cost_scale": 1.0,
+		"texture_path": "res://assets/potions/178_Potion_Mana_P.png"
 	},
-	"extend_harvest_time": {
+	"potion_of_stamina": {
 		"cost": 50,
-		"tooltip": "Adds 10 seconds to the timer to allow for more harvesting",
+		"tooltip": "You are able to find you way out of deeper portions of the forest",
 		"max_purchases": 5,
 		"times_purchased": 0,
 		"cost_scale": 1.5,
-		"texture_path": "res://assets/potions/33_Concentrated_Red.png"
+		"texture_path": "res://assets/potions/241_Potion_Regeneration_S.png"
 	},
-	"increase_harvest_efficiency": {
-		"cost": 200,
-		"tooltip": "Doubles The harvest from each flower collected",
-		"max_purchases": 2,
+	"potion_of_perseverance": {
+		"cost": 50,
+		"tooltip": "Reduces how long you are exhausted for when you miss a flower",
+		"max_purchases": 6,
+		"times_purchased": 0,
+		"cost_scale": 1.5,
+		"texture_path": "res://assets/potions/241_Potion_Regeneration_S.png"
+	},
+	"potion_of_luck": {
+		"cost": 100,
+		"tooltip": "Increases the chance to double the value of a harvest",
+		"max_purchases": 5,
 		"times_purchased": 0,
 		"cost_scale": 2.0,
-		"texture_path": "res://assets/potions/34_Concentrated_Yellow.png"
+		"texture_path": "res://assets/potions/479_Potion_Angelic_Q.png"
 	}
 }
 
 func _on_harvest_time_finished() -> void:
 	number_of_runs += 1
-	get_tree().change_scene_to_file("res://shop.tscn")
 
 func purchase_item(upgrade: String) -> void:
 	currency -= shop_items[upgrade].cost
@@ -50,11 +58,17 @@ func purchase_item(upgrade: String) -> void:
 	shop_items[upgrade].cost = roundi(shop_items[upgrade].cost * shop_items[upgrade].cost_scale)
 	call(upgrade + "_purchased")
 
-func highlight_flowers_purchased() -> void:
+func potion_of_enhanced_sight_purchased() -> void:
 	upgrades.should_highlight_flowers = true
-	
-func extend_harvest_time_purchased() -> void:
+
+func potion_of_stamina_purchased() -> void:
 	upgrades.harvest_time += 10
 
-func increase_harvest_efficiency_purchased() -> void:
-	upgrades.harvest_multiplier *= 2
+func potion_of_perseverance_purchased() -> void:
+	upgrades.exhaustion_timer -= .25
+
+func potion_of_luck_purchased() -> void:
+	upgrades.harvest_double_chance += .2
+
+func _on_harvest_ending_animation_finished() -> void:
+	get_tree().change_scene_to_file("res://shop.tscn")

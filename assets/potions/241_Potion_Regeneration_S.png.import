@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8xnxa4k006wn"
-path="res://.godot/imported/35_Concentrated_Green.png-e2b2d7284a7e3baf83484c169fdef1a8.ctex"
+uid="uid://dlps5gsg6epy8"
+path="res://.godot/imported/241_Potion_Regeneration_S.png-b44218fe34964e3cdc33a15dd9739e41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/35_Concentrated_Green.png"
-dest_files=["res://.godot/imported/35_Concentrated_Green.png-e2b2d7284a7e3baf83484c169fdef1a8.ctex"]
+source_file="res://assets/potions/241_Potion_Regeneration_S.png"
+dest_files=["res://.godot/imported/241_Potion_Regeneration_S.png-b44218fe34964e3cdc33a15dd9739e41.ctex"]
 
 [params]
 

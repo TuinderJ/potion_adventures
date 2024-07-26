@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bano6g5c05wv"
-path="res://.godot/imported/34_Concentrated_Yellow.png-dfd0f979c6976ee139df5a3a0dfd14b4.ctex"
+uid="uid://dgu6cfptijutu"
+path="res://.godot/imported/120_Potion_Health_R.png-6c19f48d6d10994b9afbc64e6dafea73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/34_Concentrated_Yellow.png"
-dest_files=["res://.godot/imported/34_Concentrated_Yellow.png-dfd0f979c6976ee139df5a3a0dfd14b4.ctex"]
+source_file="res://assets/potions/120_Potion_Health_R.png"
+dest_files=["res://.godot/imported/120_Potion_Health_R.png-6c19f48d6d10994b9afbc64e6dafea73.ctex"]
 
 [params]
 

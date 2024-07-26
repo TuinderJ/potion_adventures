@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1uunvge4d20n"
-path="res://.godot/imported/32_Concentrated_Blue.png-9be2219895e47bba1e0ad8fcfcc6d655.ctex"
+uid="uid://cnt6ocvt4b2vj"
+path="res://.godot/imported/75_Potion_Experience_M.png-553a93dc07434d509a1c5cf7d56ee404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/32_Concentrated_Blue.png"
-dest_files=["res://.godot/imported/32_Concentrated_Blue.png-9be2219895e47bba1e0ad8fcfcc6d655.ctex"]
+source_file="res://assets/potions/75_Potion_Experience_M.png"
+dest_files=["res://.godot/imported/75_Potion_Experience_M.png-553a93dc07434d509a1c5cf7d56ee404.ctex"]
 
 [params]
 

@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 	if collectables.size() and playback.get_current_node() == "loot":
 		for collectable in collectables:
 			collectable.collect()
+			spawn_item_collection_notifier(collectable)
 		collected_anything = true
 
 func _input(event: InputEvent) -> void:
@@ -42,4 +43,19 @@ func _on_missed_loot_timer_timeout() -> void:
 func _on_loot_end() -> void:
 	if not collected_anything:
 		playback.travel("exhausted")
+		missed_loot_timer.wait_time = Game.upgrades.exhaustion_timer
 		missed_loot_timer.start()
+
+func spawn_item_collection_notifier(item) -> void:
+	var item_collection_label = Label.new()
+	if item.should_double:
+		item_collection_label.text = "+ " + str(item.value * 2)
+	else:
+		item_collection_label.text = "+ " + str(item.value)
+	item_collection_label.position = Vector2(-10, -85)
+	add_child(item_collection_label)
+	var tween = create_tween()
+	tween.tween_property(item_collection_label, "position", Vector2(-10, -125), 1)
+	tween.parallel().tween_property(item_collection_label, "self_modulate", Color(255, 255, 255, 0), 1)
+	await tween.finished
+	item_collection_label.queue_free()
