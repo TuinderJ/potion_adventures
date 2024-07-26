@@ -68,4 +68,9 @@ theme_override_constants/outline_size = 5
 text = "Max"
 horizontal_alignment = 1
 
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Max"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -47,15 +47,19 @@ func _on_loot_end() -> void:
 		missed_loot_timer.start()
 
 func spawn_item_collection_notifier(item) -> void:
-	var item_collection_label = Label.new()
+	var item_collection_label = RichTextLabel.new()
+	item_collection_label.bbcode_enabled = true
+	item_collection_label.size = Vector2(620, 360)
+	item_collection_label.add_theme_constant_override("outline_size", 3)
+	item_collection_label.add_theme_color_override("font_outline_color", Color(0, 1))
 	if item.should_double:
-		item_collection_label.text = "+ " + str(item.value * 2)
+		item_collection_label.text = "[font_size=25][shake rate=20 level=5 connected=0]+ " + str(item.value * 2)
 	else:
 		item_collection_label.text = "+ " + str(item.value)
-	item_collection_label.position = Vector2(-10, -85)
+	item_collection_label.position = Vector2(-20, -85)
 	add_child(item_collection_label)
 	var tween = create_tween()
-	tween.tween_property(item_collection_label, "position", Vector2(-10, -125), 1)
+	tween.tween_property(item_collection_label, "position", Vector2(-20, -125), 1)
 	tween.parallel().tween_property(item_collection_label, "self_modulate", Color(255, 255, 255, 0), 1)
 	await tween.finished
 	item_collection_label.queue_free()

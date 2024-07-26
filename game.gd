@@ -1,7 +1,7 @@
 extends Node
 
 var number_of_runs: = 0
-var currency: int = 0:
+var currency: = 0:
 	set(new_value):
 		currency = new_value
 		currency_updated.emit()

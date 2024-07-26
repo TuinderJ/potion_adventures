@@ -150,6 +150,10 @@ shape = SubResource("RectangleShape2D_kmdoq")
 wait_time = 2.0
 one_shot = true
 
+[node name="RichTextLabel" type="RichTextLabel" parent="MissedLootTimer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
 [connection signal="timeout" from="MissedLootTimer" to="." method="_on_missed_loot_timer_timeout"]

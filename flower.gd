@@ -7,13 +7,12 @@ var should_double: = false
 func _ready() -> void:
 	var dir = DirAccess.open("res://assets/flowers/")
 	var files: PackedStringArray = dir.get_files()
-	var random_number = str(randi_range(1,files.size() / 2))
+	var random_number = str(randi_range(1, 100))
 	if int(random_number) < 100:
 		random_number = "0" + random_number
 	if int(random_number) < 10:
 		random_number = "0" + random_number
 	value = ceil(int(random_number) * .1)
-	
 	set_up_sprite(random_number)
 	set_up_area_2d()
 	set_up_visible_on_screen_notifier_2d()
@@ -61,6 +60,4 @@ func collect() -> void:
 
 func _should_double() -> void:
 	var random_number = randf_range(0, 1)
-	prints(random_number, Game.upgrades.harvest_double_chance)
 	should_double = random_number < Game.upgrades.harvest_double_chance
-	prints("Should Double", should_double)
