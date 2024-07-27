@@ -21,7 +21,7 @@ Boy: What do I need this for?
 Alchemist: It's for harvesting what you find.
 Alchemist: Now get to it!
 Boy: (A bit flustered the boy heads off into the forest)
-do emit("dialogue_over")
+do emit("transition_to_forest")
 
 => END
 
@@ -37,6 +37,6 @@ Boy: Wait you will keep paying me?
 Alchemist: As long as you keep getting me more flowers.
 Boy: Awesome!
 Alchemist: You can spend the gold however you like, but here are some potions that will help you on your journeys through the forest.
-do emit("dialogue_over")
+do emit("transition_to_shop")
 
 => END
