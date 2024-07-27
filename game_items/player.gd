@@ -53,6 +53,8 @@ func _on_loot_end() -> void:
 		missed_loot_timer.start()
 
 func spawn_item_collection_notifier(item) -> void:
+	if Game.number_of_runs == 0:
+		return
 	var item_collection_label = RichTextLabel.new()
 	item_collection_label.bbcode_enabled = true
 	item_collection_label.size = Vector2(620, 360)

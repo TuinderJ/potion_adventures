@@ -29,8 +29,8 @@ do emit("transition_to_forest")
 
 Boy returns to the shop
 Alchemist: (Looks up from brewing some potions) Ah you made it back.
-Boy: Here's what I have (the boy pores out his back of flowers on the counter)
-Alchemist: (Examines the flowers and sorts them) I will give you {{Game.currency}}
+Boy: Here's what I have (the boy pores out his collection of flowers on the counter)
+Alchemist: (Examines the flowers and sorts them) I will give you {{Game.currency}} gold pieces.
 Boy: (The boys eyes go a bit wide) Thank you sir
 Alchemist: See you tomorrow night?
 Boy: Wait you will keep paying me?

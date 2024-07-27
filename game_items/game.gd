@@ -49,9 +49,6 @@ var shop_items: = {
 	}
 }
 
-func _on_harvest_time_finished() -> void:
-	number_of_runs += 1
-
 func purchase_item(upgrade: String) -> void:
 	currency -= shop_items[upgrade].cost
 	shop_items[upgrade].times_purchased += 1
@@ -71,7 +68,8 @@ func potion_of_luck_purchased() -> void:
 	upgrades.harvest_double_chance += .2
 
 func _on_harvest_ending_animation_finished() -> void:
-	if Game.number_of_runs == 1:
+	if number_of_runs == 0:
 		get_tree().change_scene_to_file("res://game_items/alchemist_dialogue.tscn")
 	else:
 		get_tree().change_scene_to_file("res://ui/shop.tscn")
+	number_of_runs += 1
