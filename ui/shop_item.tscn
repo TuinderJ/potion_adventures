@@ -68,3 +68,4 @@ horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="PanelContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]

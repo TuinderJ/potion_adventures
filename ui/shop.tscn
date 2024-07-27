@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccp4l513axtev"]
+[gd_scene load_steps=7 format=3 uid="uid://ccp4l513axtev"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_p5ntc"]
+[ext_resource type="Texture2D" uid="uid://ce6inb2bwkjdt" path="res://assets/Wood_Shop_Background.png" id="2_aa2fs"]
 [ext_resource type="Theme" uid="uid://b8okrfhmg8hhq" path="res://ui/ui_theme.tres" id="2_dgb5u"]
 [ext_resource type="Script" path="res://ui/shop_items_container.gd" id="2_vm82a"]
 [ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="3_1om3k"]
@@ -14,6 +15,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5ntc")
+
+[node name="ShopBackground" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_aa2fs")
+centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

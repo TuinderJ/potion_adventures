@@ -71,4 +71,7 @@ func potion_of_luck_purchased() -> void:
 	upgrades.harvest_double_chance += .2
 
 func _on_harvest_ending_animation_finished() -> void:
-	get_tree().change_scene_to_file("res://ui/shop.tscn")
+	if Game.number_of_runs == 1:
+		get_tree().change_scene_to_file("res://game_items/alchemist_dialogue.tscn")
+	else:
+		get_tree().change_scene_to_file("res://ui/shop.tscn")

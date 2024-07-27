@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://45jarpwombb8"]
+
+[ext_resource type="Script" path="res://game_items/alchemist_dialogue.gd" id="1_ekwru"]
+[ext_resource type="PackedScene" uid="uid://hllkuvtnc6yw" path="res://game_items/player.tscn" id="1_yh2dd"]
+[ext_resource type="Texture2D" uid="uid://cmrkgxh7jki1y" path="res://icon.svg" id="2_j2bq6"]
+[ext_resource type="Texture2D" uid="uid://ce6inb2bwkjdt" path="res://assets/Wood_Shop_Background.png" id="2_m2lyn"]
+
+[node name="AlchemistDialogue" type="Node2D"]
+script = ExtResource("1_ekwru")
+dialogue_file = "res://dialogue.dialogue"
+
+[node name="BackgroundImage" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_m2lyn")
+centered = false
+
+[node name="Alchemist" type="Sprite2D" parent="."]
+position = Vector2(405, 99.5)
+scale = Vector2(0.460938, 0.460938)
+texture = ExtResource("2_j2bq6")
+
+[node name="Player" parent="." instance=ExtResource("1_yh2dd")]
+unique_name_in_owner = true
+position = Vector2(189, 128.5)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Player"]
+position = Vector2(14, -28.5)
+scale = Vector2(4.3, 3.05)
+
+[connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

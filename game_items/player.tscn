@@ -1,14 +1,22 @@
-[gd_scene load_steps=25 format=3 uid="uid://hllkuvtnc6yw"]
+[gd_scene load_steps=40 format=3 uid="uid://hllkuvtnc6yw"]
 
 [ext_resource type="Script" path="res://game_items/player.gd" id="1_ob2sr"]
 [ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="2_aeiqo"]
 [ext_resource type="Texture2D" uid="uid://34gnm5b8m832" path="res://assets/player/character_sword_Attack_0.png" id="3_bqruw"]
+[ext_resource type="Texture2D" uid="uid://nxggofjpv0g1" path="res://assets/player/character no weapon/character_idle_0.png" id="3_yhe4u"]
 [ext_resource type="Texture2D" uid="uid://bt5pgn7jtvqmb" path="res://assets/player/character_sword_Attack_1.png" id="4_c75up"]
+[ext_resource type="Texture2D" uid="uid://bpfubexwacdy5" path="res://assets/player/character no weapon/character_idle_1.png" id="4_h0wga"]
 [ext_resource type="Texture2D" uid="uid://dvjsasbpx3uex" path="res://assets/player/character_sword_Attack_2.png" id="5_uyrhw"]
+[ext_resource type="Texture2D" uid="uid://8a1oduq1f0c6" path="res://assets/player/character no weapon/character_idle_2.png" id="5_wrpmd"]
+[ext_resource type="Texture2D" uid="uid://1j0thx3tk7a0" path="res://assets/player/character no weapon/character_idle_3.png" id="6_34j7b"]
 [ext_resource type="Texture2D" uid="uid://b8gangw6tumvh" path="res://assets/player/character_sword_Attack_3.png" id="6_yvraq"]
 [ext_resource type="Texture2D" uid="uid://dehr8f1wuebao" path="res://assets/player/character_run_1.png" id="7_3p7ua"]
 [ext_resource type="Texture2D" uid="uid://b35pi3kkc0xl8" path="res://assets/player/character_run_2.png" id="8_3oqfp"]
 [ext_resource type="Texture2D" uid="uid://jf2i53rire0l" path="res://assets/player/character_run_3.png" id="9_cmj7g"]
+[ext_resource type="Texture2D" uid="uid://45jvlwajjm74" path="res://assets/player/character_idle_0.png" id="10_srw2p"]
+[ext_resource type="Texture2D" uid="uid://cy1of231o3vl7" path="res://assets/player/character_idle_1.png" id="11_yi6os"]
+[ext_resource type="Texture2D" uid="uid://dr0mx4fpcnff2" path="res://assets/player/character_idle_2.png" id="12_t7v01"]
+[ext_resource type="Texture2D" uid="uid://dgvj8x5u88fi7" path="res://assets/player/character_idle_3.png" id="13_510g2"]
 
 [sub_resource type="Animation" id="Animation_u5kon"]
 length = 0.001
@@ -28,6 +36,23 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1caoj"]
 resource_name = "exhausted"
 length = 0.1
+
+[sub_resource type="Animation" id="Animation_lwntp"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_srw2p"), ExtResource("11_yi6os"), ExtResource("12_t7v01"), ExtResource("13_510g2")]
+}
 
 [sub_resource type="Animation" id="Animation_x74e2"]
 resource_name = "loot"
@@ -76,10 +101,29 @@ tracks/0/keys = {
 "values": [ExtResource("2_aeiqo"), ExtResource("7_3p7ua"), ExtResource("8_3oqfp"), ExtResource("9_cmj7g")]
 }
 
+[sub_resource type="Animation" id="Animation_775y4"]
+resource_name = "idle_no_weapon"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_yhe4u"), ExtResource("4_h0wga"), ExtResource("5_wrpmd"), ExtResource("6_34j7b")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28a41"]
 _data = {
 "RESET": SubResource("Animation_u5kon"),
 "exhausted": SubResource("Animation_1caoj"),
+"idle": SubResource("Animation_lwntp"),
+"idle_no_weapon": SubResource("Animation_775y4"),
 "loot": SubResource("Animation_x74e2"),
 "walk": SubResource("Animation_cryob")
 }
@@ -87,14 +131,17 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_75kn5"]
 animation = &"exhausted"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pbjv"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g3uiu"]
+animation = &"idle_no_weapon"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bf0q0"]
 animation = &"loot"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_olsj2"]
 animation = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwxy8"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1rdsj"]
 
@@ -106,15 +153,29 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ptys8"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ocmbn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6eu7b"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e12r8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s0lj1"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3cevi"]
+states/Start/position = Vector2(-25, 166)
 states/exhausted/node = SubResource("AnimationNodeAnimation_75kn5")
 states/exhausted/position = Vector2(333, 166)
+states/idle/node = SubResource("AnimationNodeAnimation_7pbjv")
+states/idle/position = Vector2(178, 59)
+states/idle_no_weapon/node = SubResource("AnimationNodeAnimation_g3uiu")
+states/idle_no_weapon/position = Vector2(41, 89)
 states/loot/node = SubResource("AnimationNodeAnimation_bf0q0")
 states/loot/position = Vector2(424, 89)
 states/walk/node = SubResource("AnimationNodeAnimation_olsj2")
 states/walk/position = Vector2(309, 59)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_hwxy8"), "walk", "loot", SubResource("AnimationNodeStateMachineTransition_1rdsj"), "loot", "walk", SubResource("AnimationNodeStateMachineTransition_cs2ve"), "loot", "exhausted", SubResource("AnimationNodeStateMachineTransition_ekbb1"), "exhausted", "walk", SubResource("AnimationNodeStateMachineTransition_ptys8")]
-graph_offset = Vector2(-58, 14)
+transitions = ["walk", "loot", SubResource("AnimationNodeStateMachineTransition_1rdsj"), "loot", "walk", SubResource("AnimationNodeStateMachineTransition_cs2ve"), "loot", "exhausted", SubResource("AnimationNodeStateMachineTransition_ekbb1"), "exhausted", "walk", SubResource("AnimationNodeStateMachineTransition_ptys8"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_ocmbn"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_6eu7b"), "Start", "idle_no_weapon", SubResource("AnimationNodeStateMachineTransition_e12r8"), "idle_no_weapon", "idle", SubResource("AnimationNodeStateMachineTransition_s0lj1")]
+graph_offset = Vector2(-153, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmdoq"]
 size = Vector2(37, 58)

@@ -6,18 +6,24 @@ const SPEED: = 250
 @onready var collection_area: Area2D = $CollectionArea
 @onready var missed_loot_timer: Timer = $MissedLootTimer
 
-var can_loot: = true
+var can_loot: = false
 var collected_anything: = false
+var should_be_walking: = false
 
 var collectables: Array[Flower]
 var playback: AnimationNodeStateMachinePlayback = null
 
 func _ready() -> void:
 	playback = animation_tree["parameters/playback"]
+	if get_parent() is Level:
+		should_be_walking = true
+		playback.travel("walk")
+		can_loot = true
 
 func _physics_process(_delta: float) -> void:
-	velocity = Vector2(SPEED, 0)
-	move_and_slide()
+	if should_be_walking:
+		velocity = Vector2(SPEED, 0)
+		move_and_slide()
 
 func _process(_delta: float) -> void:
 	if collectables.size() and playback.get_current_node() == "loot":
@@ -27,7 +33,7 @@ func _process(_delta: float) -> void:
 		collected_anything = true
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("loot") and playback.get_current_node() == "walk":
+	if event.is_action_pressed("loot") and playback.get_current_node() == "walk" and can_loot:
 		playback.travel("loot")
 		collected_anything = false
 

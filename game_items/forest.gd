@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Level
+
 @onready var flower_spawn_timer: Timer = $FlowerSpawnTimer
 @onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
 
