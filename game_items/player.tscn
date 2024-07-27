@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://hllkuvtnc6yw"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_ob2sr"]
+[ext_resource type="Script" path="res://game_items/player.gd" id="1_ob2sr"]
 [ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="2_aeiqo"]
 [ext_resource type="Texture2D" uid="uid://34gnm5b8m832" path="res://assets/player/character_sword_Attack_0.png" id="3_bqruw"]
 [ext_resource type="Texture2D" uid="uid://bt5pgn7jtvqmb" path="res://assets/player/character_sword_Attack_1.png" id="4_c75up"]

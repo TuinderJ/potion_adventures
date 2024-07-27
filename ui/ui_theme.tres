@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8okrfhmg8hhq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bi2q"]
+
+[resource]
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 3
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_7bi2q")

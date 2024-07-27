@@ -26,7 +26,7 @@ func set_up_sprite(random_number: String) -> void:
 	
 	if Game.upgrades["should_highlight_flowers"]:
 		var shader_material = ShaderMaterial.new()
-		shader_material.shader = preload("res://flower.gdshader")
+		shader_material.shader = preload("res://game_items/flower.gdshader")
 		sprite_2d.material = shader_material
 		
 	add_child(sprite_2d)

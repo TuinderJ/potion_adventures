@@ -1,19 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://tux6mf8smlay"]
+[gd_scene load_steps=20 format=3 uid="uid://tux6mf8smlay"]
 
-[ext_resource type="Texture2D" uid="uid://b0cowvfnutyko" path="res://assets/NightForest/Layers/1.png" id="1_2fm3y"]
-[ext_resource type="Script" path="res://forest.gd" id="1_emwtk"]
-[ext_resource type="Texture2D" uid="uid://c8ok1au5vn73t" path="res://assets/NightForest/Layers/2.png" id="2_t43f2"]
-[ext_resource type="Texture2D" uid="uid://sf2iypfbpi8d" path="res://assets/NightForest/Layers/3.png" id="3_5g7h4"]
-[ext_resource type="Texture2D" uid="uid://djyho2b6wyi7w" path="res://assets/NightForest/Layers/4.png" id="4_xs3ae"]
-[ext_resource type="Texture2D" uid="uid://ci53mqnqhn5ba" path="res://assets/NightForest/Layers/5.png" id="5_5fmla"]
-[ext_resource type="Texture2D" uid="uid://b5uj0rtyjxp4e" path="res://assets/NightForest/Layers/6.png" id="6_c14b4"]
-[ext_resource type="PackedScene" uid="uid://hllkuvtnc6yw" path="res://player.tscn" id="7_vgtrg"]
-[ext_resource type="Script" path="res://click_label.gd" id="9_fk21j"]
-[ext_resource type="Script" path="res://progress_bar.gd" id="9_qbm5f"]
-[ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="10_r5cno"]
-[ext_resource type="Texture2D" uid="uid://dehr8f1wuebao" path="res://assets/player/character_run_1.png" id="11_8wljm"]
-[ext_resource type="Texture2D" uid="uid://b35pi3kkc0xl8" path="res://assets/player/character_run_2.png" id="12_sd5it"]
-[ext_resource type="Texture2D" uid="uid://jf2i53rire0l" path="res://assets/player/character_run_3.png" id="13_0k5m2"]
+[ext_resource type="Script" path="res://game_items/forest.gd" id="1_5ntv2"]
+[ext_resource type="Texture2D" uid="uid://b0cowvfnutyko" path="res://assets/NightForest/Layers/1.png" id="2_ixy8m"]
+[ext_resource type="Texture2D" uid="uid://c8ok1au5vn73t" path="res://assets/NightForest/Layers/2.png" id="3_6blki"]
+[ext_resource type="Texture2D" uid="uid://sf2iypfbpi8d" path="res://assets/NightForest/Layers/3.png" id="4_a2toq"]
+[ext_resource type="Texture2D" uid="uid://djyho2b6wyi7w" path="res://assets/NightForest/Layers/4.png" id="5_qehyb"]
+[ext_resource type="Texture2D" uid="uid://ci53mqnqhn5ba" path="res://assets/NightForest/Layers/5.png" id="6_np61c"]
+[ext_resource type="Texture2D" uid="uid://b5uj0rtyjxp4e" path="res://assets/NightForest/Layers/6.png" id="7_qbyo7"]
+[ext_resource type="PackedScene" uid="uid://hllkuvtnc6yw" path="res://game_items/player.tscn" id="8_jpchp"]
+[ext_resource type="Script" path="res://ui/click_label.gd" id="9_557gl"]
+[ext_resource type="Script" path="res://ui/progress_bar.gd" id="10_o0jlv"]
+[ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="11_04n8e"]
+[ext_resource type="Texture2D" uid="uid://dehr8f1wuebao" path="res://assets/player/character_run_1.png" id="12_1iw8f"]
+[ext_resource type="Texture2D" uid="uid://b35pi3kkc0xl8" path="res://assets/player/character_run_2.png" id="13_txt67"]
+[ext_resource type="Texture2D" uid="uid://jf2i53rire0l" path="res://assets/player/character_run_3.png" id="14_a2i4c"]
+[ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="15_lxfdk"]
+[ext_resource type="Script" path="res://ui/currency_label.gd" id="16_q0yp5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76hjt"]
 bg_color = Color(0.6, 0.6, 0.6, 0.466667)
@@ -38,16 +40,16 @@ corner_radius_bottom_left = 10
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_r5cno")
+"texture": ExtResource("11_04n8e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_8wljm")
+"texture": ExtResource("12_1iw8f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_sd5it")
+"texture": ExtResource("13_txt67")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_0k5m2")
+"texture": ExtResource("14_a2i4c")
 }],
 "loop": true,
 "name": &"default",
@@ -55,7 +57,7 @@ animations = [{
 }]
 
 [node name="Forest" type="Node2D"]
-script = ExtResource("1_emwtk")
+script = ExtResource("1_5ntv2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -64,7 +66,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(620, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("1_2fm3y")
+texture = ExtResource("2_ixy8m")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -72,7 +74,7 @@ motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(620, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("2_t43f2")
+texture = ExtResource("3_6blki")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -80,21 +82,21 @@ motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(620, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("3_5g7h4")
+texture = ExtResource("4_a2toq")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(620, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("4_xs3ae")
+texture = ExtResource("5_qehyb")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-texture = ExtResource("5_5fmla")
+texture = ExtResource("6_np61c")
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -102,10 +104,10 @@ motion_scale = Vector2(1.2, 1.2)
 motion_mirroring = Vector2(620, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
-texture = ExtResource("6_c14b4")
+texture = ExtResource("7_qbyo7")
 centered = false
 
-[node name="Player" parent="." instance=ExtResource("7_vgtrg")]
+[node name="Player" parent="." instance=ExtResource("8_jpchp")]
 position = Vector2(76, 292)
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
@@ -122,7 +124,7 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="TutorialLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -134,7 +136,7 @@ grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 text = "Click to Harvest"
-script = ExtResource("9_fk21j")
+script = ExtResource("9_557gl")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 custom_minimum_size = Vector2(300, 20)
@@ -149,13 +151,33 @@ grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_76hjt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d777i")
 show_percentage = false
-script = ExtResource("9_qbm5f")
+script = ExtResource("10_o0jlv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ProgressBar"]
 position = Vector2(0, 5)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_f8fbo")
 autoplay = "default"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -47.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_lxfdk")
+
+[node name="CurrencyLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("16_q0yp5")
 
 [connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="FlowerSpawnTimer" to="." method="_on_flower_spawn_timer_timeout"]

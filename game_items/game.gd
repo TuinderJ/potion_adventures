@@ -71,4 +71,4 @@ func potion_of_luck_purchased() -> void:
 	upgrades.harvest_double_chance += .2
 
 func _on_harvest_ending_animation_finished() -> void:
-	get_tree().change_scene_to_file("res://shop.tscn")
+	get_tree().change_scene_to_file("res://ui/shop.tscn")

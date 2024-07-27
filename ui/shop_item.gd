@@ -1,14 +1,13 @@
 extends MarginContainer
 
-@onready var texture_button: TextureButton = $PanelContainer/TextureButton
-
 var upgrade
+
+signal update_tooltip
 
 func _ready() -> void:
 	Game.currency_updated.connect(update_shop_item)
 	%UpgradeName.text = upgrade.capitalize()
-	texture_button.tooltip_text = Game.shop_items[upgrade].tooltip
-	texture_button.texture_normal = load(Game.shop_items[upgrade].texture_path)
+	%TextureButton.texture_normal = load(Game.shop_items[upgrade].texture_path)
 	update_shop_item()
 
 func _on_texture_button_pressed() -> void:
@@ -25,7 +24,13 @@ func update_shop_item() -> void:
 		%Max.show()
 		%UpgradeCost.hide()
 		%CanPurchaseCover.show()
-		texture_button.mouse_default_cursor_shape = Control.CURSOR_ARROW
+		%TextureButton.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	if Game.currency < Game.shop_items[upgrade].cost:
 		%CanPurchaseCover.show()
-		texture_button.mouse_default_cursor_shape = Control.CURSOR_ARROW
+		%TextureButton.mouse_default_cursor_shape = Control.CURSOR_ARROW
+
+func _on_texture_button_mouse_entered() -> void:
+	update_tooltip.emit(Game.shop_items[upgrade].tooltip)
+
+func _on_texture_button_mouse_exited() -> void:
+	update_tooltip.emit("")

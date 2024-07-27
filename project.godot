@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Potion Adventures"
-run/main_scene="res://forest.tscn"
+run/main_scene="res://game_items/forest.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Game="*res://game.gd"
+Game="*res://game_items/game.gd"
 
 [display]
 
