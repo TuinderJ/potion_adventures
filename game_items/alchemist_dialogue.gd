@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	var flower = Flower.new()
-	flower.position = $Player.position + Vector2(630, -16)
+	flower.position = Vector2(300, 200)
 	flower.force_highlight = true
 	add_child(flower)
 	
@@ -29,3 +29,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_give_player_weapon() -> void:
 	%Player.playback.travel("idle")
+	for child in get_children():
+		if child is Flower:
+			child.queue_free()
