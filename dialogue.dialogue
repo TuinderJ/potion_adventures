@@ -19,6 +19,7 @@ Alchemist: Hold on take this with you. (The alchemist hands the boy a sword)
 do emit("give_player_weapon")
 Boy: What do I need this for?
 Alchemist: It's for harvesting what you find.
+Alchemist: Be careful though. You don't look like you're used to swinging that sword. If you miss while trying to harvest, you'll need some time to recover.
 Alchemist: Now get to it!
 Boy: (A bit flustered the boy heads off into the forest)
 do emit("transition_to_forest")
@@ -29,9 +30,9 @@ do emit("transition_to_forest")
 
 Boy returns to the shop
 Alchemist: (Looks up from brewing some potions) Ah you made it back.
-Boy: Here's what I have (the boy pores out his collection of flowers on the counter)
-Alchemist: (Examines the flowers and sorts them) I will give you {{Game.currency}} gold pieces.
-Boy: (The boys eyes go a bit wide) Thank you sir
+Boy: Here's what I have (the boy pours out his collection of flowers on the counter)
+Alchemist: (Examines the flowers and sorts them) I will give you {{Game.currency}} gold pieces for these.
+Boy: (The boys eyes go a bit wide) Thank you sir!
 Alchemist: See you tomorrow night?
 Boy: Wait you will keep paying me?
 Alchemist: As long as you keep getting me more flowers.

@@ -13,6 +13,7 @@ func _ready() -> void:
 	if int(random_number) < 10:
 		random_number = "0" + random_number
 	value = ceil(int(random_number) * .1)
+	set_up_light()
 	set_up_sprite(random_number)
 	set_up_area_2d()
 	set_up_visible_on_screen_notifier_2d()
@@ -61,3 +62,10 @@ func collect() -> void:
 func _should_double() -> void:
 	var random_number = randf_range(0, 1)
 	should_double = random_number < Game.upgrades.harvest_double_chance
+
+func set_up_light() -> void:
+	if !Game.upgrades.should_highlight_flowers:
+		return
+	var sprite_2d: = Sprite2D.new()
+	sprite_2d.texture = load("res://assets/light_blur.png")
+	add_child(sprite_2d)

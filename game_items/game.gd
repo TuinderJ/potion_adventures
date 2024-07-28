@@ -9,7 +9,7 @@ var currency: = 0:
 signal currency_updated
 
 var upgrades: = {
-	"should_highlight_flowers": false,
+	"should_highlight_flowers": true,
 	"harvest_time": 10.0,
 	"harvest_double_chance": 0.0,
 	"exhaustion_timer": 2.0
@@ -17,7 +17,7 @@ var upgrades: = {
 var shop_items: = {
 	"potion_of_enhanced_sight": {
 		"cost": 150,
-		"tooltip": "Highlights the flowers that appear to make them easier to see",
+		"tooltip": "Causes flowers to glow at night making them easier to see",
 		"max_purchases": 1,
 		"times_purchased": 0,
 		"cost_scale": 1.0,
