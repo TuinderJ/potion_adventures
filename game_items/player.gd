@@ -47,7 +47,9 @@ func _on_missed_loot_timer_timeout() -> void:
 	playback.travel("walk")
 
 func _on_loot_end() -> void:
-	if not collected_anything:
+	if collected_anything:
+		playback.travel("walk")
+	else:
 		playback.travel("exhausted")
 		missed_loot_timer.wait_time = Game.upgrades.exhaustion_timer
 		missed_loot_timer.start()

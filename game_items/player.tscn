@@ -145,10 +145,6 @@ animation = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1rdsj"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cs2ve"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ekbb1"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ptys8"]
@@ -162,6 +158,8 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s0lj1"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xhh3w"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3cevi"]
 states/Start/position = Vector2(-25, 166)
 states/exhausted/node = SubResource("AnimationNodeAnimation_75kn5")
@@ -174,8 +172,8 @@ states/loot/node = SubResource("AnimationNodeAnimation_bf0q0")
 states/loot/position = Vector2(424, 89)
 states/walk/node = SubResource("AnimationNodeAnimation_olsj2")
 states/walk/position = Vector2(309, 59)
-transitions = ["walk", "loot", SubResource("AnimationNodeStateMachineTransition_1rdsj"), "loot", "walk", SubResource("AnimationNodeStateMachineTransition_cs2ve"), "loot", "exhausted", SubResource("AnimationNodeStateMachineTransition_ekbb1"), "exhausted", "walk", SubResource("AnimationNodeStateMachineTransition_ptys8"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_ocmbn"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_6eu7b"), "Start", "idle_no_weapon", SubResource("AnimationNodeStateMachineTransition_e12r8"), "idle_no_weapon", "idle", SubResource("AnimationNodeStateMachineTransition_s0lj1")]
-graph_offset = Vector2(-153, 13)
+transitions = ["walk", "loot", SubResource("AnimationNodeStateMachineTransition_1rdsj"), "loot", "exhausted", SubResource("AnimationNodeStateMachineTransition_ekbb1"), "exhausted", "walk", SubResource("AnimationNodeStateMachineTransition_ptys8"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_ocmbn"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_6eu7b"), "Start", "idle_no_weapon", SubResource("AnimationNodeStateMachineTransition_e12r8"), "idle_no_weapon", "idle", SubResource("AnimationNodeStateMachineTransition_s0lj1"), "loot", "walk", SubResource("AnimationNodeStateMachineTransition_xhh3w")]
+graph_offset = Vector2(-116, -8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmdoq"]
 size = Vector2(37, 58)
@@ -210,10 +208,6 @@ shape = SubResource("RectangleShape2D_kmdoq")
 [node name="MissedLootTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MissedLootTimer"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
