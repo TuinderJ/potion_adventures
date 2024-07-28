@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tux6mf8smlay"]
+[gd_scene load_steps=21 format=3 uid="uid://tux6mf8smlay"]
 
 [ext_resource type="Script" path="res://game_items/forest.gd" id="1_5ntv2"]
 [ext_resource type="Texture2D" uid="uid://b0cowvfnutyko" path="res://assets/NightForest/Layers/1.png" id="2_ixy8m"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://jf2i53rire0l" path="res://assets/player/character_run_3.png" id="14_a2i4c"]
 [ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="15_lxfdk"]
 [ext_resource type="Script" path="res://ui/currency_label.gd" id="16_q0yp5"]
+[ext_resource type="AudioStream" uid="uid://cjwnqg10lu8t5" path="res://assets/audio/Across_the_Lands_[LOOP].wav" id="17_efwrl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76hjt"]
 bg_color = Color(0.6, 0.6, 0.6, 0.466667)
@@ -179,6 +180,10 @@ texture = ExtResource("15_lxfdk")
 [node name="CurrencyLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 script = ExtResource("16_q0yp5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_efwrl")
+autoplay = true
 
 [connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="FlowerSpawnTimer" to="." method="_on_flower_spawn_timer_timeout"]

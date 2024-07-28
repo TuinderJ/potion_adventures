@@ -4,6 +4,8 @@ class_name Flower
 var value: int
 var should_double: = false
 var force_highlight: = false
+var audio_stream_player: AudioStreamPlayer
+var has_been_collected: = false
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://assets/flowers/")
@@ -14,10 +16,12 @@ func _ready() -> void:
 	if int(random_number) < 10:
 		random_number = "0" + random_number
 	value = ceil(int(random_number) * .1)
+	_should_double()
 	set_up_light()
 	set_up_sprite(random_number)
 	set_up_area_2d()
 	set_up_visible_on_screen_notifier_2d()
+	set_up_loot_audio()
 
 func set_up_sprite(random_number: String) -> void:
 	var sprite_2d: = Sprite2D.new()
@@ -30,7 +34,7 @@ func set_up_sprite(random_number: String) -> void:
 		var shader_material = ShaderMaterial.new()
 		shader_material.shader = preload("res://game_items/flower.gdshader")
 		sprite_2d.material = shader_material
-		
+	
 	add_child(sprite_2d)
 
 func set_up_area_2d() -> void:
@@ -52,13 +56,19 @@ func set_up_visible_on_screen_notifier_2d() -> void:
 func on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
-func collect() -> void:
-	_should_double()
+func collect() -> bool:
+	if has_been_collected:
+		return false
 	if should_double:
 		Game.currency += (value * 2)
 	else:
 		Game.currency += value
-	queue_free()
+	for child in get_children():
+		if child is Sprite2D:
+			child.queue_free()
+	audio_stream_player.play()
+	has_been_collected = true
+	return true
 
 func _should_double() -> void:
 	var random_number = randf_range(0, 1)
@@ -70,3 +80,15 @@ func set_up_light() -> void:
 	var sprite_2d: = Sprite2D.new()
 	sprite_2d.texture = preload("res://assets/light_blur.png")
 	add_child(sprite_2d)
+
+func set_up_loot_audio() -> void:
+	audio_stream_player = AudioStreamPlayer.new()
+	if should_double:
+		audio_stream_player.stream = preload("res://assets/audio/retro_coin_pickup_02.wav")
+	else:
+		audio_stream_player.stream = preload("res://assets/audio/coins_pickup_shake_08.wav")
+	audio_stream_player.finished.connect(_on_loot_audio_finish)
+	add_child(audio_stream_player)
+
+func _on_loot_audio_finish() -> void:
+	queue_free()

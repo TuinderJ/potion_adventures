@@ -28,9 +28,9 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta: float) -> void:
 	if collectables.size() and playback.get_current_node() == "loot":
 		for collectable in collectables:
-			collectable.collect()
-			spawn_item_collection_notifier(collectable)
-		collected_anything = true
+			if collectable.collect():
+				spawn_item_collection_notifier(collectable)
+				collected_anything = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("loot") and playback.get_current_node() == "walk" and can_loot:

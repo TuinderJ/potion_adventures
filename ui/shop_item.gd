@@ -16,6 +16,7 @@ func _on_texture_button_pressed() -> void:
 	if Game.currency < Game.shop_items[upgrade].cost:
 		return
 	Game.purchase_item(upgrade)
+	%PurchaseSound.play()
 	update_shop_item()
 
 func update_shop_item() -> void:

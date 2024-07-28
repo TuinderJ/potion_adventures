@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy1srpchgj1bu"]
+[gd_scene load_steps=5 format=3 uid="uid://dy1srpchgj1bu"]
 
 [ext_resource type="Script" path="res://ui/shop_item.gd" id="1_7a81p"]
 [ext_resource type="Theme" uid="uid://b8okrfhmg8hhq" path="res://ui/ui_theme.tres" id="2_fltk2"]
 [ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="3_840t3"]
+[ext_resource type="AudioStream" uid="uid://c1dklu0k71q0r" path="res://assets/audio/Fanfare_BigItemGet1_V1.wav" id="4_yg2tc"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 96.0
@@ -65,6 +66,10 @@ layout_mode = 2
 theme = ExtResource("2_fltk2")
 text = "Max"
 horizontal_alignment = 1
+
+[node name="PurchaseSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_yg2tc")
 
 [connection signal="mouse_entered" from="PanelContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://hllkuvtnc6yw"]
+[gd_scene load_steps=41 format=3 uid="uid://hllkuvtnc6yw"]
 
 [ext_resource type="Script" path="res://game_items/player.gd" id="1_ob2sr"]
 [ext_resource type="Texture2D" uid="uid://ebk1m8j7abn1" path="res://assets/player/character_run_0.png" id="2_aeiqo"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cy1of231o3vl7" path="res://assets/player/character_idle_1.png" id="11_yi6os"]
 [ext_resource type="Texture2D" uid="uid://dr0mx4fpcnff2" path="res://assets/player/character_idle_2.png" id="12_t7v01"]
 [ext_resource type="Texture2D" uid="uid://dgvj8x5u88fi7" path="res://assets/player/character_idle_3.png" id="13_510g2"]
+[ext_resource type="AudioStream" uid="uid://dl2inv7vhb03t" path="res://assets/audio/blade_whoosh_04.wav" id="18_towdk"]
 
 [sub_resource type="Animation" id="Animation_u5kon"]
 length = 0.001
@@ -82,6 +83,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("3_bqruw"), ExtResource("4_c75up"), ExtResource("5_uyrhw"), ExtResource("6_yvraq")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwingSwordSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_cryob"]
@@ -208,6 +221,10 @@ shape = SubResource("RectangleShape2D_kmdoq")
 [node name="MissedLootTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SwingSwordSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("18_towdk")
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]

@@ -3,10 +3,11 @@ extends Node2D
 @export_file(".dialogue") var dialogue_file
 
 func _ready() -> void:
-	var flower = Flower.new()
-	flower.position = Vector2(300, 200)
-	flower.force_highlight = true
-	add_child(flower)
+	if Game.number_of_runs == 0:
+		var flower = Flower.new()
+		flower.position = Vector2(300, 200)
+		flower.force_highlight = true
+		add_child(flower)
 	
 	var dialogue = load(dialogue_file)
 	if Game.number_of_runs == 0:
