@@ -3,6 +3,11 @@ extends Node2D
 @export_file(".dialogue") var dialogue_file
 
 func _ready() -> void:
+	var flower = Flower.new()
+	flower.position = $Player.position + Vector2(630, -16)
+	flower.force_highlight = true
+	add_child(flower)
+	
 	var dialogue = load(dialogue_file)
 	if Game.number_of_runs == 0:
 		DialogueManager.show_dialogue_balloon(dialogue, "opening_dialogue")

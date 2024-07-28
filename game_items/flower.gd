@@ -3,6 +3,7 @@ class_name Flower
 
 var value: int
 var should_double: = false
+var force_highlight: = false
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://assets/flowers/")
@@ -25,7 +26,7 @@ func set_up_sprite(random_number: String) -> void:
 	sprite_2d.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite_2d.scale = Vector2(2, 2)
 	
-	if Game.upgrades["should_highlight_flowers"]:
+	if Game.upgrades["should_highlight_flowers"] or force_highlight:
 		var shader_material = ShaderMaterial.new()
 		shader_material.shader = preload("res://game_items/flower.gdshader")
 		sprite_2d.material = shader_material
@@ -67,5 +68,5 @@ func set_up_light() -> void:
 	if !Game.upgrades.should_highlight_flowers:
 		return
 	var sprite_2d: = Sprite2D.new()
-	sprite_2d.texture = load("res://assets/light_blur.png")
+	sprite_2d.texture = preload("res://assets/light_blur.png")
 	add_child(sprite_2d)
