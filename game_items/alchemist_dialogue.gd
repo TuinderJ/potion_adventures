@@ -8,6 +8,7 @@ func _ready() -> void:
 		flower.position = Vector2(300, 200)
 		flower.force_highlight = true
 		add_child(flower)
+		Game.bgm_player.play()
 	
 	var dialogue = load(dialogue_file)
 	if Game.number_of_runs == 0:

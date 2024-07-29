@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game_items/alchemist_dialogue.gd" id="1_ekwru"]
 [ext_resource type="PackedScene" uid="uid://hllkuvtnc6yw" path="res://game_items/player.tscn" id="1_yh2dd"]
 [ext_resource type="Texture2D" uid="uid://ce6inb2bwkjdt" path="res://assets/Wood_Shop_Background.png" id="2_m2lyn"]
-[ext_resource type="PackedScene" uid="uid://bkcah46tmqxln" path="res://alchemist.tscn" id="4_j6bio"]
+[ext_resource type="PackedScene" uid="uid://bkcah46tmqxln" path="res://game_items/alchemist.tscn" id="4_j6bio"]
 
 [node name="AlchemistDialogue" type="Node2D"]
 script = ExtResource("1_ekwru")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/shop_item.gd" id="1_7a81p"]
 [ext_resource type="Theme" uid="uid://b8okrfhmg8hhq" path="res://ui/ui_theme.tres" id="2_fltk2"]
 [ext_resource type="Texture2D" uid="uid://cmwdryq64g806" path="res://assets/22_Leperchaun_Coin.png" id="3_840t3"]
-[ext_resource type="AudioStream" uid="uid://c1dklu0k71q0r" path="res://assets/audio/Fanfare_BigItemGet1_V1.wav" id="4_yg2tc"]
+[ext_resource type="AudioStream" uid="uid://b8ln2qwutmlnt" path="res://assets/audio/ui_purchase_01.wav" id="4_nml62"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 96.0
@@ -69,7 +69,7 @@ horizontal_alignment = 1
 
 [node name="PurchaseSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_yg2tc")
+stream = ExtResource("4_nml62")
 volume_db = -15.0
 
 [connection signal="mouse_entered" from="PanelContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]

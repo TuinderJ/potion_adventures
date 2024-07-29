@@ -60,7 +60,7 @@ func spawn_item_collection_notifier(item) -> void:
 	var h_box_container = HBoxContainer.new()
 	add_child(h_box_container)
 	h_box_container.size = Vector2(68, 24)
-	h_box_container.position = Vector2(-15, -80)
+	h_box_container.position = Vector2(-20, -80)
 	
 	var item_collection_label = RichTextLabel.new()
 	item_collection_label.bbcode_enabled = true
@@ -81,7 +81,7 @@ func spawn_item_collection_notifier(item) -> void:
 	h_box_container.add_child(texture_rect)
 	
 	var tween = create_tween()
-	tween.tween_property(h_box_container, "position", Vector2(-20, -125), 1)
+	tween.tween_property(h_box_container, "position", Vector2(-80, -125), 1)
 	tween.parallel().tween_property(h_box_container, "modulate:a", 0, 1)
 	await tween.finished
 	h_box_container.queue_free()

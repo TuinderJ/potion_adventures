@@ -53,7 +53,6 @@ var shop_items: = {
 func _ready() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.stream = preload("res://assets/audio/Across_the_Lands_[LOOP].wav")
-	bgm_player.autoplay = true
 	bgm_player.volume_db = -20
 	add_child(bgm_player)
 
