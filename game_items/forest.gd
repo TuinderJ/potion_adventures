@@ -7,6 +7,10 @@ class_name Level
 
 func _ready() -> void:
 	progress_bar.call("start_progress_bar", Game.upgrades.harvest_time)
+	var tween = create_tween()
+	tween.tween_property(Game.bgm_player, "volume_db", -20, 1)
+	await tween.finished
+	tween.kill()
 
 func spawn_flower():
 	var flower = Flower.new()

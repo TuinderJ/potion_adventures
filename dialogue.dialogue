@@ -1,43 +1,43 @@
 ~ opening_dialogue
 
-#Alchemist: Hey boy!
-#Boy: Me? (The boy is currently pick through a trash can for his lunch)
-#Alchemist: Yes you, you look pretty down on you luck and like you need some money.
-#Boy: What do you mean? Eating from trash cans is best life there is!
-#Alchemist: Well if you say so. (The alchemist turns to leave)
-#Boy: Wait wait wait, do you have something better in mind?
-#Alchemist: I do indeed, how would you like to collect flowers in the forest for me?
-#Boy: You will give me money for simply collecting flowers?
-#Alchemist: Without a doubt, I can use them to make potions.
-#Boy: Well that sounds rather easy, how much are you offering?
-#Alchemist: That depends on what you bring back.
-#Alchemist: You see, different flowers make different potions so some are worth more than others.
-#Boy: Any particular ones you nee d?
-#Alchemist: I need flowers that bloom under the shadow of night. The more flowers I get the more potions I can create, and the more money we can make.
-#Boy: Well, I guess I will be off then.
+Alchemist: Hey boy!
+Boy: Me? (The boy is currently pick through a trash can for his lunch)
+Alchemist: Yes you, you look pretty down on you luck and like you need some money.
+Boy: What do you mean? Eating from trash cans is best life there is!
+Alchemist: Well if you say so. (The alchemist turns to leave)
+Boy: Wait wait wait, do you have something better in mind?
+Alchemist: I do indeed, how would you like to collect flowers in the forest for me?
+Boy: You will give me money for simply collecting flowers?
+Alchemist: Without a doubt, I can use them to make potions.
+Boy: Well that sounds rather easy, how much are you offering?
+Alchemist: That depends on what you bring back.
+Alchemist: You see, different flowers make different potions so some are worth more than others.
+Boy: Any particular ones you need?
+Alchemist: I need flowers that bloom under the shadow of night. The more flowers I get the more potions I can create, and the more money we can make.
+Boy: Well, I guess I will be off then.
 Alchemist: Hold on take this with you. (The alchemist hands the boy a sword)
 do emit("give_player_weapon")
-#Boy: What do I need this for?
-#Alchemist: It's for harvesting what you find.
-#Alchemist: Be careful though. You don't look like you're used to swinging that sword. If you miss while trying to harvest, you'll need some time to recover.
-#Alchemist: Now get to it!
-#Boy: (A bit flustered the boy heads off into the forest)
+Boy: What do I need this for?
+Alchemist: It's for harvesting what you find.
+Alchemist: Be careful though. You don't look like you're used to swinging that sword. If you miss while trying to harvest, you'll need some time to recover.
+Alchemist: Now get to it!
+Boy: (A bit flustered the boy heads off into the forest)
 do emit("transition_to_forest")
 
 => END
 
 ~ dialogue_after_first_run
 
-#Boy returns to the shop
-#Alchemist: (Looks up from brewing some potions) Ah you made it back.
-#Boy: Here's what I have (the boy pours out his collection of flowers on the counter)
+Boy returns to the shop
+Alchemist: (Looks up from brewing some potions) Ah you made it back.
+Boy: Here's what I have (the boy pours out his collection of flowers on the counter)
 Alchemist: (Examines the flowers and sorts them) I will give you {{Game.currency}} gold pieces for these.
-#Boy: (The boys eyes go a bit wide) Thank you sir!
-#Alchemist: See you tomorrow night?
-#Boy: Wait you will keep paying me?
-#Alchemist: As long as you keep getting me more flowers.
-#Boy: Awesome!
-#Alchemist: You can spend the gold however you like, but here are some potions that will help you on your journeys through the forest.
+Boy: (The boys eyes go a bit wide) Thank you sir!
+Alchemist: See you tomorrow night?
+Boy: Wait you will keep paying me?
+Alchemist: As long as you keep getting me more flowers.
+Boy: Awesome!
+Alchemist: You can spend the gold however you like, but here are some potions that will help you on your journeys through the forest.
 do emit("transition_to_shop")
 
 => END

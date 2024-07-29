@@ -55,6 +55,23 @@ tracks/0/keys = {
 "values": [ExtResource("10_srw2p"), ExtResource("11_yi6os"), ExtResource("12_t7v01"), ExtResource("13_510g2")]
 }
 
+[sub_resource type="Animation" id="Animation_775y4"]
+resource_name = "idle_no_weapon"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_yhe4u"), ExtResource("4_h0wga"), ExtResource("5_wrpmd"), ExtResource("6_34j7b")]
+}
+
 [sub_resource type="Animation" id="Animation_x74e2"]
 resource_name = "loot"
 length = 0.4
@@ -112,23 +129,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_aeiqo"), ExtResource("7_3p7ua"), ExtResource("8_3oqfp"), ExtResource("9_cmj7g")]
-}
-
-[sub_resource type="Animation" id="Animation_775y4"]
-resource_name = "idle_no_weapon"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_yhe4u"), ExtResource("4_h0wga"), ExtResource("5_wrpmd"), ExtResource("6_34j7b")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28a41"]
@@ -225,6 +225,7 @@ one_shot = true
 [node name="SwingSwordSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("18_towdk")
+volume_db = -20.0
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]

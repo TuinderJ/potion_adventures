@@ -87,6 +87,7 @@ func set_up_loot_audio() -> void:
 		audio_stream_player.stream = preload("res://assets/audio/retro_coin_pickup_02.wav")
 	else:
 		audio_stream_player.stream = preload("res://assets/audio/coins_pickup_shake_08.wav")
+	audio_stream_player.volume_db = -20
 	audio_stream_player.finished.connect(_on_loot_audio_finish)
 	add_child(audio_stream_player)
 

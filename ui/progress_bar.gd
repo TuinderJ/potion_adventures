@@ -7,3 +7,5 @@ func start_progress_bar(duration: float) -> void:
 	tween.finished.connect(get_parent().get_parent()._on_harvest_time_finished)
 	tween.tween_property(self, "value", max_value, duration)
 	tween.parallel().tween_property(animated_sprite_2d, "position", Vector2(size.x, 5), duration)
+	await tween.finished
+	tween.kill()

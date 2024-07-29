@@ -1,5 +1,6 @@
 extends Node
 
+var bgm_player: AudioStreamPlayer
 var number_of_runs: = 0
 var currency: = 0:
 	set(new_value):
@@ -48,6 +49,13 @@ var shop_items: = {
 		"texture_path": "res://assets/potions/479_Potion_Angelic_Q.png"
 	}
 }
+
+func _ready() -> void:
+	bgm_player = AudioStreamPlayer.new()
+	bgm_player.stream = preload("res://assets/audio/Across_the_Lands_[LOOP].wav")
+	bgm_player.autoplay = true
+	bgm_player.volume_db = -20
+	add_child(bgm_player)
 
 func purchase_item(upgrade: String) -> void:
 	currency -= shop_items[upgrade].cost

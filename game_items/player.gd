@@ -57,19 +57,31 @@ func _on_loot_end() -> void:
 func spawn_item_collection_notifier(item) -> void:
 	if Game.number_of_runs == 0:
 		return
+	var h_box_container = HBoxContainer.new()
+	add_child(h_box_container)
+	h_box_container.size = Vector2(68, 24)
+	h_box_container.position = Vector2(-15, -80)
+	
 	var item_collection_label = RichTextLabel.new()
 	item_collection_label.bbcode_enabled = true
-	item_collection_label.size = Vector2(620, 360)
+	item_collection_label.custom_minimum_size = Vector2(32, 16)
 	item_collection_label.add_theme_constant_override("outline_size", 3)
 	item_collection_label.add_theme_color_override("font_outline_color", Color(0, 1))
 	if item.should_double:
 		item_collection_label.text = "[rainbow][font_size=25][shake rate=20 level=5 connected=0]+ " + str(item.value * 2)
 	else:
 		item_collection_label.text = "+ " + str(item.value)
-	item_collection_label.position = Vector2(-20, -85)
-	add_child(item_collection_label)
+	h_box_container.add_child(item_collection_label)
+	
+	var texture_rect = TextureRect.new()
+	texture_rect.texture = preload("res://assets/22_Leperchaun_Coin.png")
+	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	texture_rect.custom_minimum_size = Vector2(24, 24)
+	h_box_container.add_child(texture_rect)
+	
 	var tween = create_tween()
-	tween.tween_property(item_collection_label, "position", Vector2(-20, -125), 1)
-	tween.parallel().tween_property(item_collection_label, "self_modulate:a", 0, 1)
+	tween.tween_property(h_box_container, "position", Vector2(-20, -125), 1)
+	tween.parallel().tween_property(h_box_container, "modulate:a", 0, 1)
 	await tween.finished
-	item_collection_label.queue_free()
+	h_box_container.queue_free()
+	tween.kill()
